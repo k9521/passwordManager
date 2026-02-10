@@ -53,6 +53,10 @@
             this.buttonSavePassword = new System.Windows.Forms.Button();
             this.textBoxOwnName = new System.Windows.Forms.TextBox();
             this.labelOwnName = new System.Windows.Forms.Label();
+            this.button2FA = new System.Windows.Forms.Button();
+            this.label2FAPath = new System.Windows.Forms.Label();
+            this.labelFile2FAAuthPath = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.lenghtPassword)).BeginInit();
             this.SuspendLayout();
             // 
@@ -249,7 +253,7 @@
             // 
             // buttonSavePassword
             // 
-            this.buttonSavePassword.Location = new System.Drawing.Point(32, 289);
+            this.buttonSavePassword.Location = new System.Drawing.Point(32, 322);
             this.buttonSavePassword.Name = "buttonSavePassword";
             this.buttonSavePassword.Size = new System.Drawing.Size(75, 23);
             this.buttonSavePassword.TabIndex = 25;
@@ -273,11 +277,46 @@
             this.labelOwnName.TabIndex = 26;
             this.labelOwnName.Text = "Name of password:";
             // 
+            // button2FA
+            // 
+            this.button2FA.Location = new System.Drawing.Point(32, 284);
+            this.button2FA.Name = "button2FA";
+            this.button2FA.Size = new System.Drawing.Size(144, 23);
+            this.button2FA.TabIndex = 28;
+            this.button2FA.Text = "Finde 2FA QR Code";
+            this.button2FA.UseVisualStyleBackColor = true;
+            this.button2FA.Click += new System.EventHandler(this.button2FA_Click);
+            // 
+            // label2FAPath
+            // 
+            this.label2FAPath.AutoSize = true;
+            this.label2FAPath.Location = new System.Drawing.Point(182, 289);
+            this.label2FAPath.Name = "label2FAPath";
+            this.label2FAPath.Size = new System.Drawing.Size(32, 13);
+            this.label2FAPath.TabIndex = 29;
+            this.label2FAPath.Text = "Path:";
+            // 
+            // labelFile2FAAuthPath
+            // 
+            this.labelFile2FAAuthPath.AutoSize = true;
+            this.labelFile2FAAuthPath.Location = new System.Drawing.Point(220, 289);
+            this.labelFile2FAAuthPath.Name = "labelFile2FAAuthPath";
+            this.labelFile2FAAuthPath.Size = new System.Drawing.Size(70, 13);
+            this.labelFile2FAAuthPath.TabIndex = 30;
+            this.labelFile2FAAuthPath.Text = "2FA QR Path";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // AddPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 326);
+            this.ClientSize = new System.Drawing.Size(682, 357);
+            this.Controls.Add(this.labelFile2FAAuthPath);
+            this.Controls.Add(this.label2FAPath);
+            this.Controls.Add(this.button2FA);
             this.Controls.Add(this.textBoxOwnName);
             this.Controls.Add(this.labelOwnName);
             this.Controls.Add(this.buttonSavePassword);
@@ -334,5 +373,9 @@
         private System.Windows.Forms.Button buttonSavePassword;
         private System.Windows.Forms.TextBox textBoxOwnName;
         private System.Windows.Forms.Label labelOwnName;
+        private System.Windows.Forms.Button button2FA;
+        private System.Windows.Forms.Label label2FAPath;
+        private System.Windows.Forms.Label labelFile2FAAuthPath;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

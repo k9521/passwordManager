@@ -15,14 +15,16 @@ namespace ClickerPassword
         public bool isStrictWidnow;
         [OptionalField]
         public string keyboardLayout;
+        [OptionalField]
+        public string auth2FASecret;
 
         // Konstruktor dla starej wersji
         public Data(string ownName, string username, string password, string widnowTitle, bool isStrictWidnow)
-            : this(ownName, username, password, widnowTitle, isStrictWidnow, null) // ustaw null jako domyślny layout
+            : this(ownName, username, password, widnowTitle, isStrictWidnow, null, null) // ustaw null jako domyślny layout
         {
         }
 
-        public Data(string ownName, string username, string password, string widnowTitle, bool isStrictWidnow, string keyboardLayout)
+        public Data(string ownName, string username, string password, string widnowTitle, bool isStrictWidnow, string keyboardLayout, string auth2FASecret)
         {
             this.ownName = ownName;
             this.username = username;
@@ -34,6 +36,7 @@ namespace ClickerPassword
                 keyboardLayout = "00000415";// if it's null then set up PL
             }
             this.keyboardLayout = keyboardLayout;
+            this.auth2FASecret = auth2FASecret;
         }
         
         public override string ToString()
@@ -43,7 +46,13 @@ namespace ClickerPassword
         "\npassword: " + password +
         "\nwidnowTitle: " + widnowTitle +
         "\nisStrictWidnow: " + isStrictWidnow +
-        "KeyboardLayout: " + keyboardLayout;
+        "\nKeyboardLayout: " + keyboardLayout+
+        "\nauth2FASecret: " + auth2FASecret;
+        }
+
+        internal void Update2FASecret(string auth2FASecret)
+        {
+            this.auth2FASecret = auth2FASecret;
         }
     }
 }

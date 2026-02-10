@@ -28,6 +28,7 @@ namespace PasswordManager
             this.password = password;
             this.user = user;
             this.key = key;
+//            this.labelFile2FAAuthPath.Text = "";
             InitializeComponent();
             
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -55,6 +56,9 @@ namespace PasswordManager
             textBoxPassword.Enabled = true;
             textBoxConfirmPassword.Enabled = true;
             checkBoxWindowTitle.Enabled = false;
+            button2FA.Enabled = false;
+            label2FAPath.Text = "";
+            labelFile2FAAuthPath.Text = "";
 
             Data data = FileEncryption.GetEntry(password, user, key);
             textBoxUser.Text = data.username;
@@ -89,6 +93,7 @@ namespace PasswordManager
             buttonGetWindowTitle.Enabled = checkBoxWindowTitle.Checked;
             labelWindowTitle.Enabled = checkBoxWindowTitle.Checked;
             textBoxWindowTitle.Enabled = checkBoxWindowTitle.Checked;
+            button2FA.Enabled = true;
         }
 
         private void checkBoxGeneratePassword_CheckedChanged(object sender, EventArgs e)
@@ -164,6 +169,15 @@ namespace PasswordManager
             WritePasword.WarningIfCapslockIsActive();
         }
 
+        private void button2FA_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            labelFile2FAAuthPath.Text = openFileDialog.FileName;
+        }
+
         private void buttonSavePassword_Click(object sender, EventArgs e)
         {
             if (textBoxPassword.Text.Length == 0 && textBoxUser.Text.Length == 0)
@@ -220,6 +234,11 @@ namespace PasswordManager
             }
 
             Data data = new Data(textBoxOwnName.Text, textBoxUser.Text, textBoxPassword.Text, textBoxWindowTitle.Text, checkBoxWindowTitle.Checked);
+            if(labelFile2FAAuthPath.Text != "")
+            {
+                string qrURL = Auth2FA.ReadQrCode(labelFile2FAAuthPath.Text);
+                data.Update2FASecret(Auth2FA.ParseSecretFromUrl(qrURL));
+            }
             if (key != null)
             {
                 FileEncryption.UpdatePasswordEntry(password, user, key, data);

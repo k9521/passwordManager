@@ -20,6 +20,8 @@ namespace PasswordManager
         Data[] currentData;
         bool pushBothAlts = false;
         LoginForm loginForm;
+        private DateTime fillPasswordTime;
+
         public MainForm(LoginForm loginForm)
         {
             this.loginForm = loginForm;
@@ -80,7 +82,7 @@ namespace PasswordManager
 
         private void timerOnePassword_Tick(object sender, EventArgs e)
         {
-            if (timerOnePassword.Tag == "2")
+            if (timerOnePassword.Tag == "100")
             {
                 timerOnePassword.Enabled = false;
                 changeEnabledOnePasswordAction(true);
@@ -96,7 +98,10 @@ namespace PasswordManager
                     pushBothAlts = true;
                 }
             }
-            if(pushBothAlts && !isLeftAltPressed && !isRightAltPressed)
+            if (timerOnePassword.Tag == "2" && (DateTime.Now - fillPasswordTime).TotalSeconds > 10) {
+                timerOnePassword.Tag = "100";
+            }
+            if (pushBothAlts && !isLeftAltPressed && !isRightAltPressed)
             {
                 pushBothAlts = false;
                 writeData(currentData[0], timerOnePassword);
@@ -114,9 +119,24 @@ namespace PasswordManager
                 else if (timer.Tag == "1")
                 {
                     WritePasword.write(currentData.password, currentData.keyboardLayout);
+                    if(currentData.auth2FASecret == null)
+                    {
+                        timer.Tag = null;
+                        currentData = null;
+                        timer.Tag = "100";
+                    } else
+                    {
+                        timer.Tag = "2";
+                        fillPasswordTime = DateTime.Now;
+                    }
+                }
+                else if (timer.Tag == "2")
+                {
+                    WritePasword.write(Auth2FA.GeneratePin(currentData.auth2FASecret), currentData.keyboardLayout);
+                    
                     timer.Tag = null;
                     currentData = null;
-                    timer.Tag = "2";                    
+                    timer.Tag = "100";
                 }
             }
             else
@@ -124,7 +144,7 @@ namespace PasswordManager
                 String textToWrite = currentData.username.Length != 0 ? currentData.username : currentData.password;
                 WritePasword.write(textToWrite, currentData.keyboardLayout);
                 currentData = null;
-                timer.Tag = "2";
+                timer.Tag = "100";
             }
 
         }
@@ -208,6 +228,10 @@ namespace PasswordManager
         {
             bool isLeftAltPressed = (GetAsyncKeyState(Keys.RControlKey) & 0x8000) != 0;
             bool isRightAltPressed = (GetAsyncKeyState(Keys.LControlKey) & 0x8000) != 0;
+            if (timerAllPassword.Tag == "2" && (DateTime.Now - fillPasswordTime).TotalSeconds > 10)
+            {
+                timerAllPassword.Tag = "100";
+            }
             if (isLeftAltPressed && isRightAltPressed)
             {
                     pushBothAlts = true;
@@ -218,7 +242,7 @@ namespace PasswordManager
                 Data matchData = findMatchData();
                 if (matchData != null && (matchData.username != null || matchData.password != null))
                 {
-                    if (timerAllPassword.Tag == "2")
+                    if (timerAllPassword.Tag == "100")
                     {
                         timerAllPassword.Tag = null;
                     }
