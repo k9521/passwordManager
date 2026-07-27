@@ -62,127 +62,140 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(124, 62);
+            this.textBoxPassword.Location = new System.Drawing.Point(186, 95);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(148, 26);
             this.textBoxPassword.TabIndex = 8;
             this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(29, 65);
+            this.labelPassword.Location = new System.Drawing.Point(44, 100);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelPassword.Size = new System.Drawing.Size(82, 20);
             this.labelPassword.TabIndex = 7;
             this.labelPassword.Text = "Password:";
             // 
             // textBoxUser
             // 
-            this.textBoxUser.Location = new System.Drawing.Point(124, 25);
+            this.textBoxUser.Location = new System.Drawing.Point(186, 38);
+            this.textBoxUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUser.Size = new System.Drawing.Size(148, 26);
             this.textBoxUser.TabIndex = 6;
             this.textBoxUser.Enter += new System.EventHandler(this.textBoxPassword_Enter);
             // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(29, 28);
+            this.labelUser.Location = new System.Drawing.Point(44, 43);
+            this.labelUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(32, 13);
+            this.labelUser.Size = new System.Drawing.Size(47, 20);
             this.labelUser.TabIndex = 5;
             this.labelUser.Text = "User:";
             // 
             // buttonPasswordGenerate
             // 
-            this.buttonPasswordGenerate.Location = new System.Drawing.Point(364, 62);
+            this.buttonPasswordGenerate.Location = new System.Drawing.Point(546, 95);
+            this.buttonPasswordGenerate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonPasswordGenerate.Name = "buttonPasswordGenerate";
-            this.buttonPasswordGenerate.Size = new System.Drawing.Size(104, 25);
-            this.buttonPasswordGenerate.TabIndex = 9;
+            this.buttonPasswordGenerate.Size = new System.Drawing.Size(156, 38);
+            this.buttonPasswordGenerate.TabIndex = 25;
             this.buttonPasswordGenerate.Text = "Generate new password";
             this.buttonPasswordGenerate.UseVisualStyleBackColor = true;
             this.buttonPasswordGenerate.Click += new System.EventHandler(this.buttonPasswordGenerate_Click);
             // 
             // textBoxConfirmPassword
             // 
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(124, 99);
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(186, 152);
+            this.textBoxConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             this.textBoxConfirmPassword.PasswordChar = '*';
-            this.textBoxConfirmPassword.Size = new System.Drawing.Size(100, 20);
+            this.textBoxConfirmPassword.Size = new System.Drawing.Size(148, 26);
             this.textBoxConfirmPassword.TabIndex = 11;
             this.textBoxConfirmPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 102);
+            this.label1.Location = new System.Drawing.Point(44, 157);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Confirm Password:";
             // 
             // checkBox_az
             // 
             this.checkBox_az.AutoSize = true;
-            this.checkBox_az.Location = new System.Drawing.Point(242, 101);
+            this.checkBox_az.Location = new System.Drawing.Point(363, 155);
+            this.checkBox_az.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBox_az.Name = "checkBox_az";
-            this.checkBox_az.Size = new System.Drawing.Size(40, 17);
-            this.checkBox_az.TabIndex = 12;
+            this.checkBox_az.Size = new System.Drawing.Size(57, 24);
+            this.checkBox_az.TabIndex = 20;
             this.checkBox_az.Text = "a-z";
             this.checkBox_az.UseVisualStyleBackColor = true;
             // 
             // checkBox_Capitalaz
             // 
             this.checkBox_Capitalaz.AutoSize = true;
-            this.checkBox_Capitalaz.Location = new System.Drawing.Point(288, 102);
+            this.checkBox_Capitalaz.Location = new System.Drawing.Point(432, 157);
+            this.checkBox_Capitalaz.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBox_Capitalaz.Name = "checkBox_Capitalaz";
-            this.checkBox_Capitalaz.Size = new System.Drawing.Size(43, 17);
-            this.checkBox_Capitalaz.TabIndex = 13;
+            this.checkBox_Capitalaz.Size = new System.Drawing.Size(61, 24);
+            this.checkBox_Capitalaz.TabIndex = 21;
             this.checkBox_Capitalaz.Text = "A-Z";
             this.checkBox_Capitalaz.UseVisualStyleBackColor = true;
             // 
             // checkBoxNumbers
             // 
             this.checkBoxNumbers.AutoSize = true;
-            this.checkBoxNumbers.Location = new System.Drawing.Point(337, 102);
+            this.checkBoxNumbers.Location = new System.Drawing.Point(506, 157);
+            this.checkBoxNumbers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxNumbers.Name = "checkBoxNumbers";
-            this.checkBoxNumbers.Size = new System.Drawing.Size(41, 17);
-            this.checkBoxNumbers.TabIndex = 14;
+            this.checkBoxNumbers.Size = new System.Drawing.Size(58, 24);
+            this.checkBoxNumbers.TabIndex = 22;
             this.checkBoxNumbers.Text = "0-9";
             this.checkBoxNumbers.UseVisualStyleBackColor = true;
             // 
             // checkBoxSpecialCharactes
             // 
             this.checkBoxSpecialCharactes.AutoSize = true;
-            this.checkBoxSpecialCharactes.Location = new System.Drawing.Point(384, 102);
+            this.checkBoxSpecialCharactes.Location = new System.Drawing.Point(576, 157);
+            this.checkBoxSpecialCharactes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxSpecialCharactes.Name = "checkBoxSpecialCharactes";
-            this.checkBoxSpecialCharactes.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxSpecialCharactes.TabIndex = 15;
+            this.checkBoxSpecialCharactes.Size = new System.Drawing.Size(215, 24);
+            this.checkBoxSpecialCharactes.TabIndex = 23;
             this.checkBoxSpecialCharactes.Text = "!@#$%^&*()_+={}:\"<>?,./;\'[\\]";
             this.checkBoxSpecialCharactes.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 141);
+            this.label2.Location = new System.Drawing.Point(358, 217);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.Size = new System.Drawing.Size(136, 20);
             this.label2.TabIndex = 17;
             this.label2.Text = "Lenght Password:";
             // 
             // lenghtPassword
             // 
-            this.lenghtPassword.Location = new System.Drawing.Point(337, 139);
+            this.lenghtPassword.Location = new System.Drawing.Point(506, 214);
+            this.lenghtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lenghtPassword.Minimum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.lenghtPassword.Name = "lenghtPassword";
-            this.lenghtPassword.Size = new System.Drawing.Size(120, 20);
-            this.lenghtPassword.TabIndex = 18;
+            this.lenghtPassword.Size = new System.Drawing.Size(180, 26);
+            this.lenghtPassword.TabIndex = 24;
             this.lenghtPassword.Value = new decimal(new int[] {
             5,
             0,
@@ -192,9 +205,10 @@
             // checkBoxGeneratePassword
             // 
             this.checkBoxGeneratePassword.AutoSize = true;
-            this.checkBoxGeneratePassword.Location = new System.Drawing.Point(242, 65);
+            this.checkBoxGeneratePassword.Location = new System.Drawing.Point(363, 100);
+            this.checkBoxGeneratePassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxGeneratePassword.Name = "checkBoxGeneratePassword";
-            this.checkBoxGeneratePassword.Size = new System.Drawing.Size(116, 17);
+            this.checkBoxGeneratePassword.Size = new System.Drawing.Size(172, 24);
             this.checkBoxGeneratePassword.TabIndex = 19;
             this.checkBoxGeneratePassword.Text = "GeneratePassword";
             this.checkBoxGeneratePassword.UseVisualStyleBackColor = true;
@@ -203,9 +217,10 @@
             // labelWindowTtitleClarification
             // 
             this.labelWindowTtitleClarification.AutoSize = true;
-            this.labelWindowTtitleClarification.Location = new System.Drawing.Point(29, 185);
+            this.labelWindowTtitleClarification.Location = new System.Drawing.Point(44, 285);
+            this.labelWindowTtitleClarification.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelWindowTtitleClarification.Name = "labelWindowTtitleClarification";
-            this.labelWindowTtitleClarification.Size = new System.Drawing.Size(625, 13);
+            this.labelWindowTtitleClarification.Size = new System.Drawing.Size(920, 20);
             this.labelWindowTtitleClarification.TabIndex = 20;
             this.labelWindowTtitleClarification.Text = "!! To add a window title, you need to press the button and go to the desired wind" +
     "ow. Then, press both the left and right ALT keys. !!";
@@ -213,37 +228,41 @@
             // checkBoxWindowTitle
             // 
             this.checkBoxWindowTitle.AutoSize = true;
-            this.checkBoxWindowTitle.Location = new System.Drawing.Point(32, 165);
+            this.checkBoxWindowTitle.Location = new System.Drawing.Point(48, 254);
+            this.checkBoxWindowTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBoxWindowTitle.Name = "checkBoxWindowTitle";
-            this.checkBoxWindowTitle.Size = new System.Drawing.Size(203, 17);
-            this.checkBoxWindowTitle.TabIndex = 21;
+            this.checkBoxWindowTitle.Size = new System.Drawing.Size(296, 24);
+            this.checkBoxWindowTitle.TabIndex = 30;
             this.checkBoxWindowTitle.Text = "Use window title to recognize window";
             this.checkBoxWindowTitle.UseVisualStyleBackColor = true;
             this.checkBoxWindowTitle.CheckedChanged += new System.EventHandler(this.checkBoxWindowTitle_CheckedChanged);
             // 
             // buttonGetWindowTitle
             // 
-            this.buttonGetWindowTitle.Location = new System.Drawing.Point(32, 201);
+            this.buttonGetWindowTitle.Location = new System.Drawing.Point(48, 309);
+            this.buttonGetWindowTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonGetWindowTitle.Name = "buttonGetWindowTitle";
-            this.buttonGetWindowTitle.Size = new System.Drawing.Size(101, 23);
-            this.buttonGetWindowTitle.TabIndex = 22;
+            this.buttonGetWindowTitle.Size = new System.Drawing.Size(152, 35);
+            this.buttonGetWindowTitle.TabIndex = 40;
             this.buttonGetWindowTitle.Text = "Get Window Title";
             this.buttonGetWindowTitle.UseVisualStyleBackColor = true;
             this.buttonGetWindowTitle.Click += new System.EventHandler(this.buttonGetWindowTitle_Click);
             // 
             // textBoxWindowTitle
             // 
-            this.textBoxWindowTitle.Location = new System.Drawing.Point(124, 230);
+            this.textBoxWindowTitle.Location = new System.Drawing.Point(186, 354);
+            this.textBoxWindowTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxWindowTitle.Name = "textBoxWindowTitle";
-            this.textBoxWindowTitle.Size = new System.Drawing.Size(512, 20);
-            this.textBoxWindowTitle.TabIndex = 24;
+            this.textBoxWindowTitle.Size = new System.Drawing.Size(766, 26);
+            this.textBoxWindowTitle.TabIndex = 50;
             // 
             // labelWindowTitle
             // 
             this.labelWindowTitle.AutoSize = true;
-            this.labelWindowTitle.Location = new System.Drawing.Point(38, 237);
+            this.labelWindowTitle.Location = new System.Drawing.Point(57, 365);
+            this.labelWindowTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelWindowTitle.Name = "labelWindowTitle";
-            this.labelWindowTitle.Size = new System.Drawing.Size(69, 13);
+            this.labelWindowTitle.Size = new System.Drawing.Size(98, 20);
             this.labelWindowTitle.TabIndex = 23;
             this.labelWindowTitle.Text = "WindowTitle:";
             // 
@@ -253,36 +272,40 @@
             // 
             // buttonSavePassword
             // 
-            this.buttonSavePassword.Location = new System.Drawing.Point(32, 322);
+            this.buttonSavePassword.Location = new System.Drawing.Point(48, 495);
+            this.buttonSavePassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonSavePassword.Name = "buttonSavePassword";
-            this.buttonSavePassword.Size = new System.Drawing.Size(75, 23);
-            this.buttonSavePassword.TabIndex = 25;
+            this.buttonSavePassword.Size = new System.Drawing.Size(112, 35);
+            this.buttonSavePassword.TabIndex = 80;
             this.buttonSavePassword.Text = "Save Password";
             this.buttonSavePassword.UseVisualStyleBackColor = true;
             this.buttonSavePassword.Click += new System.EventHandler(this.buttonSavePassword_Click);
             // 
             // textBoxOwnName
             // 
-            this.textBoxOwnName.Location = new System.Drawing.Point(124, 256);
+            this.textBoxOwnName.Location = new System.Drawing.Point(186, 394);
+            this.textBoxOwnName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxOwnName.Name = "textBoxOwnName";
-            this.textBoxOwnName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxOwnName.TabIndex = 27;
+            this.textBoxOwnName.Size = new System.Drawing.Size(148, 26);
+            this.textBoxOwnName.TabIndex = 60;
             // 
             // labelOwnName
             // 
             this.labelOwnName.AutoSize = true;
-            this.labelOwnName.Location = new System.Drawing.Point(29, 259);
+            this.labelOwnName.Location = new System.Drawing.Point(44, 398);
+            this.labelOwnName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelOwnName.Name = "labelOwnName";
-            this.labelOwnName.Size = new System.Drawing.Size(98, 13);
+            this.labelOwnName.Size = new System.Drawing.Size(145, 20);
             this.labelOwnName.TabIndex = 26;
             this.labelOwnName.Text = "Name of password:";
             // 
             // button2FA
             // 
-            this.button2FA.Location = new System.Drawing.Point(32, 284);
+            this.button2FA.Location = new System.Drawing.Point(48, 437);
+            this.button2FA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2FA.Name = "button2FA";
-            this.button2FA.Size = new System.Drawing.Size(144, 23);
-            this.button2FA.TabIndex = 28;
+            this.button2FA.Size = new System.Drawing.Size(216, 35);
+            this.button2FA.TabIndex = 70;
             this.button2FA.Text = "Finde 2FA QR Code";
             this.button2FA.UseVisualStyleBackColor = true;
             this.button2FA.Click += new System.EventHandler(this.button2FA_Click);
@@ -290,18 +313,20 @@
             // label2FAPath
             // 
             this.label2FAPath.AutoSize = true;
-            this.label2FAPath.Location = new System.Drawing.Point(182, 289);
+            this.label2FAPath.Location = new System.Drawing.Point(273, 445);
+            this.label2FAPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2FAPath.Name = "label2FAPath";
-            this.label2FAPath.Size = new System.Drawing.Size(32, 13);
+            this.label2FAPath.Size = new System.Drawing.Size(46, 20);
             this.label2FAPath.TabIndex = 29;
             this.label2FAPath.Text = "Path:";
             // 
             // labelFile2FAAuthPath
             // 
             this.labelFile2FAAuthPath.AutoSize = true;
-            this.labelFile2FAAuthPath.Location = new System.Drawing.Point(220, 289);
+            this.labelFile2FAAuthPath.Location = new System.Drawing.Point(330, 445);
+            this.labelFile2FAAuthPath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFile2FAAuthPath.Name = "labelFile2FAAuthPath";
-            this.labelFile2FAAuthPath.Size = new System.Drawing.Size(70, 13);
+            this.labelFile2FAAuthPath.Size = new System.Drawing.Size(104, 20);
             this.labelFile2FAAuthPath.TabIndex = 30;
             this.labelFile2FAAuthPath.Text = "2FA QR Path";
             // 
@@ -311,9 +336,9 @@
             // 
             // AddPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 357);
+            this.ClientSize = new System.Drawing.Size(1023, 549);
             this.Controls.Add(this.labelFile2FAAuthPath);
             this.Controls.Add(this.label2FAPath);
             this.Controls.Add(this.button2FA);
@@ -340,6 +365,7 @@
             this.Controls.Add(this.textBoxUser);
             this.Controls.Add(this.labelUser);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddPassword";
             this.Text = "Add Password";
             ((System.ComponentModel.ISupportInitialize)(this.lenghtPassword)).EndInit();
