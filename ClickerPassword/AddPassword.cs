@@ -37,6 +37,7 @@ namespace PasswordManager
             if(key == null)
             {
                 setupAccesibility();
+                labelFile2FAAuthPath.Text = null;
             } else
             {
                 setupAccesibilityToUpdatePassword(key);
