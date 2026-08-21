@@ -22,35 +22,57 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
-        run: nuget restore ClickerPassword.sln
+        run: nuget restore ClickerPassword\PasswordManager.csproj
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Build Release
+        shell: pwsh
         run: |
-          msbuild ClickerPassword.sln `
+          msbuild ClickerPassword\PasswordManager.csproj `
+            /t:Rebuild `
             /p:Configuration=Release `
-            /p:Platform="Any CPU" `
+            /p:Platform="AnyCPU" `
             /p:GenerateSerializationAssemblies=Off `
             /m
 
       - name: Verify application
         shell: pwsh
         run: |
-          if (-not (Test-Path "ClickerPassword\bin\Release\PasswordManager.exe")) {
+          $exe = "ClickerPassword\bin\Release\PasswordManager.exe"
+
+          if (-not (Test-Path $exe)) {
               Write-Error "PasswordManager.exe was not created."
               exit 1
           }
 
+          Write-Host "Build successful:"
+          Get-Item $exe
+
       - name: Install Inno Setup
-        run: choco install innosetup --no-progress -y
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
 
       - name: Build installer
         shell: pwsh
         run: |
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
             "installer\PasswordManager.iss"
+
+      - name: Verify installer
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem "artifacts\installer\PasswordManager-Setup-*.exe"
+
+          if (-not $installer) {
+              Write-Error "Installer was not created."
+              exit 1
+          }
+
+          Write-Host "Installer created:"
+          $installer | Format-List FullName, Length
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
