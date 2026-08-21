@@ -15,18 +15,59 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      # ============================================================
+      # Checkout
+      # ============================================================
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ============================================================
+      # NuGet
+      # ============================================================
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
-        run: nuget restore ClickerPassword\PasswordManager.csproj
+        shell: pwsh
+        run: |
+          nuget restore `
+            ClickerPassword\config\packages.config `
+            -PackagesDirectory packages `
+            -NonInteractive
 
+      # ============================================================
+      # Verify restored packages
+      # ============================================================
+      - name: Verify NuGet packages
+        shell: pwsh
+        run: |
+          $requiredFiles = @(
+            "packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets",
+            "packages\Otp.NET.1.4.1\lib\net461\Otp.NET.dll",
+            "packages\ZXing.Net.0.16.11\lib\net47\zxing.dll",
+            "packages\ZXing.Net.0.16.11\lib\net47\zxing.presentation.dll",
+            "packages\ZXing.Net.Bindings.Windows.Compatibility.0.16.14\lib\netstandard2.0\ZXing.Windows.Compatibility.dll",
+            "packages\System.Drawing.Common.10.0.2\lib\net462\System.Drawing.Common.dll"
+          )
+
+          foreach ($file in $requiredFiles) {
+              if (-not (Test-Path $file)) {
+                  Write-Error "Required NuGet file was not restored: $file"
+                  exit 1
+              }
+
+              Write-Host "OK: $file"
+          }
+
+      # ============================================================
+      # MSBuild
+      # ============================================================
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      # ============================================================
+      # Build
+      # ============================================================
       - name: Build Release
         shell: pwsh
         run: |
@@ -37,10 +78,15 @@ jobs:
             /p:GenerateSerializationAssemblies=Off `
             /m
 
+      # ============================================================
+      # Verify application
+      # ============================================================
       - name: Verify application
         shell: pwsh
         run: |
-          $exe = "ClickerPassword\bin\Release\PasswordManager.exe"
+          $output = "ClickerPassword\bin\Release"
+
+          $exe = Join-Path $output "PasswordManager.exe"
 
           if (-not (Test-Path $exe)) {
               Write-Error "PasswordManager.exe was not created."
@@ -48,38 +94,69 @@ jobs:
           }
 
           Write-Host "Build successful:"
-          Get-Item $exe
+          Get-ChildItem $output -Recurse |
+              Select-Object FullName, Length
 
+      # ============================================================
+      # Install Inno Setup
+      # ============================================================
       - name: Install Inno Setup
         shell: pwsh
         run: |
           choco install innosetup --no-progress -y
 
+      # ============================================================
+      # Build installer
+      # ============================================================
       - name: Build installer
         shell: pwsh
         run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
-            "installer\PasswordManager.iss"
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          $script = "installer\PasswordManager.iss"
 
+          if (-not (Test-Path $script)) {
+              Write-Error "Inno Setup script not found: $script"
+              exit 1
+          }
+
+          & $iscc $script
+
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "Inno Setup failed with exit code $LASTEXITCODE"
+              exit $LASTEXITCODE
+          }
+
+      # ============================================================
+      # Verify installer
+      # ============================================================
       - name: Verify installer
         shell: pwsh
         run: |
-          $installer = Get-ChildItem "artifacts\installer\PasswordManager-Setup-*.exe"
+          $installers = Get-ChildItem `
+            "artifacts\installer\PasswordManager-Setup-*.exe" `
+            -ErrorAction SilentlyContinue
 
-          if (-not $installer) {
+          if (-not $installers) {
               Write-Error "Installer was not created."
               exit 1
           }
 
           Write-Host "Installer created:"
-          $installer | Format-List FullName, Length
+          $installers | Format-List FullName, Length
 
+      # ============================================================
+      # Upload installer artifact
+      # ============================================================
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
         with:
           name: PasswordManager-Installer
           path: artifacts/installer/PasswordManager-Setup-*.exe
+          if-no-files-found: error
 
+      # ============================================================
+      # GitHub Release
+      # ============================================================
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
